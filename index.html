@@ -132,14 +132,40 @@
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
+            object-position: center top;
             margin-bottom: 20px;
             border: 5px solid white;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
+            filter: brightness(1.1) contrast(1.1);
         }
 
         .profile-img:hover {
             transform: scale(1.05);
+        }
+
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .profile-img-container:hover::before {
+            opacity: 1;
         }
 
         header h1 {
@@ -490,8 +516,8 @@
         /* Copies Section */
         .copies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             padding: 20px;
         }
 
@@ -544,11 +570,12 @@
 
         .copy-img {
             width: 100%;
-            height: 300px;
+            height: 320px;
             object-fit: contain;
             object-position: center;
             background-color: var(--light-color);
             transition: transform 0.3s ease;
+            border-radius: 10px;
         }
 
         .copy-item:hover .copy-img {
@@ -829,6 +856,8 @@
             .profile-img {
                 width: 150px;
                 height: 150px;
+                object-position: center top;
+                filter: brightness(1.15) contrast(1.15);
             }
 
             header h1 {
@@ -853,12 +882,12 @@
             }
 
             .copies-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 15px;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
             }
 
             .copy-img {
-                height: 250px;
+                height: 280px;
             }
 
             .certificate-img {
@@ -949,7 +978,9 @@
 
     <header>
         <div class="container">
-            <img src="./avater.jpeg" alt="Basel Sharaf" class="profile-img">
+            <div class="profile-img-container">
+                <img src="./avater.jpeg" alt="Basel Sharaf" class="profile-img">
+            </div>
             <h1>Basel Sharaf</h1>
             <p>Content Creator - Copywriter - Social Media Specialist</p>
             <div class="cta-buttons">
@@ -967,10 +998,9 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        Energetic and detail-oriented Social Media Marketer with 6+ months of hands-on experience in social media management, 
-                        content creation, copywriting, media buying, and campaign strategy. Proven ability to grow audience engagement, 
-                        execute paid campaigns, and build brand awareness. Strong communication, problem-solving, and organizational skills. 
-                        Adept at using data-driven insights to optimize performance and content effectiveness.
+                        I’m a Social Media Marketer with a Diploma in Social Media Marketing from ITI. Over the past 6+ months, I’ve gained hands-on experience in managing social media platforms, creating engaging content, writing compelling copy, and executing paid campaigns.
+
+                        I’m passionate about helping brands grow their online presence through creative strategies and data-driven insights. With strong communication, problem-solving, and organizational skills, I always aim to deliver measurable results and meaningful connections between brands and their audiences.
                     </p>
                 </div>
                 <div class="about-stats">
@@ -1254,8 +1284,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                        </div>
+                        </div>
     </section>
 
     <section id="copies" class="section">
@@ -1269,85 +1299,85 @@
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.03 AM (1).jpeg" alt="Copy 1" class="copy-img">
+                    <img src="./copys/1.jpeg" alt="Copy 1" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.03 AM (2).jpeg" alt="Copy 2" class="copy-img">
+                    <img src="./copys/2.jpeg" alt="Copy 2" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.03 AM.jpeg" alt="Copy 3" class="copy-img">
+                    <img src="./copys/3.jpeg" alt="Copy 3" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.04 AM (1).jpeg" alt="Copy 4" class="copy-img">
+                    <img src="./copys/4.jpeg" alt="Copy 4" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.04 AM (2).jpeg" alt="Copy 5" class="copy-img">
+                    <img src="./copys/5.jpeg" alt="Copy 5" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.04 AM (3).jpeg" alt="Copy 6" class="copy-img">
+                    <img src="./copys/6.jpeg" alt="Copy 6" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.04 AM (4).jpeg" alt="Copy 7" class="copy-img">
+                    <img src="./copys/7.jpeg" alt="Copy 7" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.04 AM (5).jpeg" alt="Copy 8" class="copy-img">
+                    <img src="./copys/8.jpeg" alt="Copy 8" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.04 AM.jpeg" alt="Copy 9" class="copy-img">
+                    <img src="./copys/9.jpeg" alt="Copy 9" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.05 AM (1).jpeg" alt="Copy 10" class="copy-img">
+                    <img src="./copys/10.jpeg" alt="Copy 10" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.05 AM (2).jpeg" alt="Copy 11" class="copy-img">
+                    <img src="./copys/11.jpeg" alt="Copy 11" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.05 AM (3).jpeg" alt="Copy 12" class="copy-img">
+                    <img src="./copys/12.jpeg" alt="Copy 12" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.05 AM.jpeg" alt="Copy 13" class="copy-img">
+                    <img src="./copys/13.jpeg" alt="Copy 13" class="copy-img">
                 </div>
                 <div class="copy-item">
                     <div class="copy-overlay">
                         <i class="fas fa-eye"></i>
                     </div>
-                    <img src="./copys/WhatsApp Image 2025-10-12 at 2.56.06 AM.jpeg" alt="Copy 14" class="copy-img">
+                    <img src="./copys/14.jpeg" alt="Copy 14" class="copy-img">
                 </div>
             </div>
         </div>
@@ -1358,7 +1388,7 @@
             <div class="section-header">
                 <h2>Video Script & Content Planning</h2>
                 <p>Strategic content planning and video script development for social media campaigns</p>
-            </div>
+                        </div>
             <div class="video-script-content">
                 <div class="script-item">
                     <img src="./video script/contentplan.jpeg" alt="Content Plan 1" class="script-img">
@@ -1434,7 +1464,7 @@
                     <a href="https://www.linkedin.com/in/basel-sharaf" class="contact-item contact-link" target="_blank">
                         <div class="contact-icon">
                             <i class="fab fa-linkedin"></i>
-                        </div>
+                    </div>
                         <div class="contact-text">
                             <h4>LinkedIn</h4>
                             <p>linkedin.com/in/basel-sharaf</p>
