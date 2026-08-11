@@ -30,6 +30,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--dark-color);
+            overflow-x: hidden;
         }
 
         .container {
@@ -96,12 +97,6 @@
             opacity: 0.92;
             max-width: 720px;
             margin: 0 auto;
-        }
-
-        .page-header .header-icon {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            display: block;
         }
 
         .header-badge {
@@ -193,6 +188,7 @@
 
         .gallery-video .gallery-overlay {
             background: none;
+            pointer-events: none;
         }
 
         .gallery-video .gallery-overlay i {
@@ -211,11 +207,15 @@
             opacity: 1;
         }
 
-        .gallery-video iframe {
+        .gallery-video video {
             width: 100%;
-            aspect-ratio: 16 / 9;
+            height: auto;
+            aspect-ratio: auto;
+            max-height: 70vh;
             border: none;
             display: block;
+            background-color: #000;
+            object-fit: contain;
         }
 
         .gallery-item-title {
@@ -350,43 +350,47 @@
                         <i class="fas fa-eye"></i>
                         <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=1A5fp1bCmTUIpRUKtPEHjoZjpqAsx3y1r&sz=w1200" alt="Saleeqalbadia_Jan_Post 10.jpg" class="gallery-img" loading="lazy">
+                    <img src="media/projects/saleeq-albadia/saleeq-albadia-cover.jpg" alt="Saleeq Albadia Cover" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item gallery-photo">
                     <div class="gallery-overlay">
                         <i class="fas fa-eye"></i>
                         <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=1cOsUSFDJGJteX_a_zQxjDBz6xyLwMoyZ&sz=w1200" alt="IMG-20251208-WA0064(1).jpg" class="gallery-img" loading="lazy">
+                    <img src="media/projects/saleeq-albadia/saleeq-albadia-02.jpg" alt="Saleeq Albadia 02" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item gallery-photo">
                     <div class="gallery-overlay">
                         <i class="fas fa-eye"></i>
                         <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=1CdGK-M7k4JlyJL-Vpg_GX2nH0MboPoGC&sz=w1200" alt="IMG-20251208-WA0070(2).jpg" class="gallery-img" loading="lazy">
+                    <img src="media/projects/saleeq-albadia/saleeq-albadia-03.jpg" alt="Saleeq Albadia 03" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item gallery-video">
                     <div class="gallery-overlay">
                         <i class="fas fa-video"></i>
                     </div>
-                    <iframe src="https://drive.google.com/file/d/1gLltcgFins2X3N79-GMqLXGSdMGFXD09/preview" title="VID-20260104-WA0046.mp4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+                    <video controls preload="metadata" poster="media/projects/saleeq-albadia/saleeq-albadia-video-01-poster.jpg" title="Saleeq Albadia Video 1">
+                        <source src="media/projects/saleeq-albadia/saleeq-albadia-video-01.mp4" type="video/mp4">
+                    </video>
                     <div class="gallery-item-title">
-                        <i class="fas fa-clapperboard"></i> VID-20260104-WA0046.mp4
+                        <i class="fas fa-clapperboard"></i> Saleeq Albadia Video 1
                     </div>
                 </div>
                 <div class="gallery-item gallery-video">
                     <div class="gallery-overlay">
                         <i class="fas fa-video"></i>
                     </div>
-                    <iframe src="https://drive.google.com/file/d/1S1L1g1748jDxPXDP1SY2okd7WoCtIzVu/preview" title="VID-20260104-WA0047.mp4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+                    <video controls preload="metadata" poster="media/projects/saleeq-albadia/saleeq-albadia-video-02-poster.jpg" title="Saleeq Albadia Video 2">
+                        <source src="media/projects/saleeq-albadia/saleeq-albadia-video-02.mp4" type="video/mp4">
+                    </video>
                     <div class="gallery-item-title">
-                        <i class="fas fa-clapperboard"></i> VID-20260104-WA0047.mp4
+                        <i class="fas fa-clapperboard"></i> Saleeq Albadia Video 2
                     </div>
                 </div>
             </div>
             <p class="media-note">
-                <i class="fas fa-eye"></i> Click any image to view it in full size &nbsp;|&nbsp; <i class="fas fa-play"></i> Videos play directly from Google Drive
+                <i class="fas fa-eye"></i> Click any image to view it in full size &nbsp;|&nbsp; <i class="fas fa-play"></i> Videos play inline with the controls
             </p>
         </div>
     </section>
@@ -406,7 +410,7 @@
             item.addEventListener('click', function() {
                 const img = this.querySelector('img');
                 modal.style.display = 'block';
-                modalImg.src = img.src.replace('sz=w1200', 'sz=w2000');
+                modalImg.src = img.dataset.full || img.src;
                 modalImg.alt = img.alt;
                 document.body.style.overflow = 'hidden';
             });

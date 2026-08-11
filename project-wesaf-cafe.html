@@ -30,6 +30,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--dark-color);
+            overflow-x: hidden;
         }
 
         .container {
@@ -96,12 +97,6 @@
             opacity: 0.92;
             max-width: 720px;
             margin: 0 auto;
-        }
-
-        .page-header .header-icon {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            display: block;
         }
 
         .header-badge {
@@ -193,6 +188,7 @@
 
         .gallery-video .gallery-overlay {
             background: none;
+            pointer-events: none;
         }
 
         .gallery-video .gallery-overlay i {
@@ -211,11 +207,15 @@
             opacity: 1;
         }
 
-        .gallery-video iframe {
+        .gallery-video video {
             width: 100%;
-            aspect-ratio: 16 / 9;
+            height: auto;
+            aspect-ratio: auto;
+            max-height: 70vh;
             border: none;
             display: block;
+            background-color: #000;
+            object-fit: contain;
         }
 
         .gallery-item-title {
@@ -350,43 +350,47 @@
                         <i class="fas fa-eye"></i>
                         <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=1zAJbgW2SU-FIDNyRmk79WqQ1Y8DKCHSM&sz=w1200" alt="Artboard 5.png" class="gallery-img" loading="lazy">
+                    <img src="media/projects/wesaf-cafe/wesaf-cafe-cover.png" alt="Wesaf Cafe Cover" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item gallery-photo">
                     <div class="gallery-overlay">
                         <i class="fas fa-eye"></i>
                         <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=1Rl5GlFZTTr5uU0wTLTEGqc6YlEijAiaQ&sz=w1200" alt="Artboard 1.png" class="gallery-img" loading="lazy">
+                    <img src="media/projects/wesaf-cafe/wesaf-cafe-02.png" alt="Wesaf Cafe 02" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item gallery-photo">
                     <div class="gallery-overlay">
                         <i class="fas fa-eye"></i>
                         <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=1aG_lqc_LcCu81m2NDL8MhX8kSPirXiCe&sz=w1200" alt="Artboard 2 copy.png" class="gallery-img" loading="lazy">
+                    <img src="media/projects/wesaf-cafe/wesaf-cafe-03.png" alt="Wesaf Cafe 03" class="gallery-img" loading="lazy">
                 </div>
                 <div class="gallery-item gallery-video">
                     <div class="gallery-overlay">
                         <i class="fas fa-video"></i>
                     </div>
-                    <iframe src="https://drive.google.com/file/d/1tNRUVT9x6GBw9X_owHZJSWBk507alH2l/preview" title="Reel 1.mp4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+                    <video controls preload="metadata" poster="media/projects/wesaf-cafe/wesaf-cafe-video-01-poster.jpg" title="Wesaf Cafe Reel 1">
+                        <source src="media/projects/wesaf-cafe/wesaf-cafe-video-01.mp4" type="video/mp4">
+                    </video>
                     <div class="gallery-item-title">
-                        <i class="fas fa-clapperboard"></i> Reel 1.mp4
+                        <i class="fas fa-clapperboard"></i> Wesaf Cafe Reel 1
                     </div>
                 </div>
                 <div class="gallery-item gallery-video">
                     <div class="gallery-overlay">
                         <i class="fas fa-video"></i>
                     </div>
-                    <iframe src="https://drive.google.com/file/d/14WnHtUM3DIPcttUJZtfKl07EDBeR1Bcw/preview" title="Reel 2.mp4" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+                    <video controls preload="metadata" poster="media/projects/wesaf-cafe/wesaf-cafe-video-02-poster.jpg" title="Wesaf Cafe Reel 2">
+                        <source src="media/projects/wesaf-cafe/wesaf-cafe-video-02.mp4" type="video/mp4">
+                    </video>
                     <div class="gallery-item-title">
-                        <i class="fas fa-clapperboard"></i> Reel 2.mp4
+                        <i class="fas fa-clapperboard"></i> Wesaf Cafe Reel 2
                     </div>
                 </div>
             </div>
             <p class="media-note">
-                <i class="fas fa-eye"></i> Click any image to view it in full size &nbsp;|&nbsp; <i class="fas fa-play"></i> Videos play directly from Google Drive
+                <i class="fas fa-eye"></i> Click any image to view it in full size &nbsp;|&nbsp; <i class="fas fa-play"></i> Videos play inline with the controls
             </p>
         </div>
     </section>
@@ -406,7 +410,7 @@
             item.addEventListener('click', function() {
                 const img = this.querySelector('img');
                 modal.style.display = 'block';
-                modalImg.src = img.src.replace('sz=w1200', 'sz=w2000');
+                modalImg.src = img.dataset.full || img.src;
                 modalImg.alt = img.alt;
                 document.body.style.overflow = 'hidden';
             });
