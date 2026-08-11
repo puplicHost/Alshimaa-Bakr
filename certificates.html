@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Certificates - Alshimaa Bakr</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #AD7556;
+            --secondary-color: #C49B7A;
+            --accent-color: #AD7556;
+            --dark-color: #D9CDBF;
+            --light-color: #D9CDBF;
+            --text-color: #000000;
+            --card-bg: #FFFFFF;
+            --nav-bg: rgba(217, 205, 191, 0.95);
+            --border-color: #C6B8A5;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--dark-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--nav-bg);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .back-btn {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #9A6546, #7A4F38);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Certificates Grid */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 80px 0;
+        }
+
+        .certificate-item {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .certificate-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .certificate-item:hover .certificate-overlay {
+            opacity: 1;
+        }
+
+        .certificate-overlay i {
+            color: white;
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .certificate-img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            object-position: center;
+            background-color: var(--light-color);
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-item:hover .certificate-img {
+            transform: scale(1.1);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 100px 0 50px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .certificates-grid {
+                gap: 20px;
+                padding: 50px 0;
+            }
+
+            .certificate-img {
+                height: 250px;
+            }
+
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+
+            .modal-close {
+                top: 10px;
+                right: 15px;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">AB</a>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>My Certificates</h1>
+            <p>Reflecting expertise and continuous learning.</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="certificates-grid">
+                <div class="certificate-item">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <img src="./Certifications/IMG-20250917-WA0021.jpg" alt="Certificate 1" class="certificate-img">
+                </div>
+                <div class="certificate-item">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <img src="./Certifications/IMG-20250917-WA0023.jpg" alt="Certificate 2" class="certificate-img">
+                </div>
+                <div class="certificate-item">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <img src="./Certifications/IMG-20250917-WA0024.jpg" alt="Certificate 3" class="certificate-img">
+                </div>
+                <div class="certificate-item">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <img src="./Certifications/IMG-20260604-WA0000.jpg" alt="Certificate 4" class="certificate-img">
+                </div>
+                <div class="certificate-item">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <img src="./Certifications/Screenshot_٢٠٢٦٠٧١١_٢٣٠٥٢٦_Drive.jpg" alt="Certificate 5" class="certificate-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Image Viewing -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Modal functionality for images
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.modal-close');
+
+        document.querySelectorAll('.certificate-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                modal.style.display = 'block';
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
