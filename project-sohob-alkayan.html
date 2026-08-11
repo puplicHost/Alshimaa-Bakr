@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Certificates - Alshimaa Bakr</title>
+    <title>Sohob Alkayan - Alshimaa Bakr</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -88,23 +88,43 @@
 
         .page-header h1 {
             font-size: 3rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.15rem;
+            opacity: 0.92;
+            max-width: 720px;
+            margin: 0 auto;
         }
 
-        /* Certificates Grid */
-        .certificates-grid {
+        .page-header .header-icon {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Gallery */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             padding: 80px 0;
         }
 
-        .certificate-item {
+        .gallery-item {
             background-color: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
@@ -115,53 +135,115 @@
             cursor: pointer;
         }
 
-        .certificate-item:hover {
+        .gallery-item:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .certificate-overlay {
+        .gallery-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.55);
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            gap: 10px;
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 2;
         }
 
-        .certificate-item:hover .certificate-overlay {
+        .gallery-item:hover .gallery-overlay {
             opacity: 1;
         }
 
-        .certificate-overlay i {
+        .gallery-overlay i {
             color: white;
             font-size: 2rem;
-            animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        .gallery-overlay span {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        .certificate-img {
+        .gallery-img {
             width: 100%;
             height: 300px;
-            object-fit: contain;
+            object-fit: cover;
             object-position: center;
             background-color: var(--light-color);
             transition: transform 0.3s ease;
         }
 
-        .certificate-item:hover .certificate-img {
-            transform: scale(1.1);
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item.gallery-video {
+            cursor: default;
+            background-color: #fff;
+        }
+
+        .gallery-video .gallery-overlay {
+            background: none;
+        }
+
+        .gallery-video .gallery-overlay i {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            opacity: 1;
+        }
+
+        .gallery-video iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            display: block;
+        }
+
+        .gallery-item-title {
+            padding: 14px 16px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-color);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gallery-item-title i {
+            color: var(--accent-color);
+        }
+
+        .media-note {
+            text-align: center;
+            color: var(--text-color);
+            opacity: 0.75;
+            font-size: 0.9rem;
+            padding: 0 20px 60px;
+        }
+
+        .media-note i {
+            color: var(--accent-color);
+            margin: 0 4px;
         }
 
         /* Modal Styles */
@@ -182,8 +264,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 92%;
+            max-height: 92%;
             object-fit: contain;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -219,13 +301,13 @@
                 font-size: 2rem;
             }
 
-            .certificates-grid {
+            .gallery-grid {
                 gap: 20px;
                 padding: 50px 0;
             }
 
-            .certificate-img {
-                height: 250px;
+            .gallery-img {
+                height: 240px;
             }
 
             .modal-content {
@@ -254,45 +336,54 @@
 
     <header class="page-header">
         <div class="container">
-            <h1>My Certificates</h1>
-            <p>Reflecting expertise and continuous learning.</p>
+            <span class="header-badge"><i class="fas fa-elevator"></i> Elevators & Maintenance</span>
+            <h1>Sohob Alkayan</h1>
+            <p>The campaign focused on elevator maintenance, emergency services, safety, and easy payment plans.</p>
         </div>
     </header>
 
     <section>
         <div class="container">
-            <div class="certificates-grid">
-                <div class="certificate-item">
-                    <div class="certificate-overlay">
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-photo">
+                    <div class="gallery-overlay">
                         <i class="fas fa-eye"></i>
+                        <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=17dsRDEypdP-0Iini5EKUFCvtz4sH3CEt&sz=w1200" alt="Certificate 1" class="certificate-img" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1MFIRmFMeD6wdBaK9Fv3IR5eVhdf3B9kD&sz=w1200" alt="IMG-20250124-WA0005(2).jpg" class="gallery-img" loading="lazy">
                 </div>
-                <div class="certificate-item">
-                    <div class="certificate-overlay">
+                <div class="gallery-item gallery-photo">
+                    <div class="gallery-overlay">
                         <i class="fas fa-eye"></i>
+                        <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=1nMJmjzbSCK4id8BerlvIHCqpCXu2J13T&sz=w1200" alt="Certificate 2" class="certificate-img" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1BRI_vvuzf1mr7XWxIvw-l43VVxh1rrdl&sz=w1200" alt="IMG-20250124-WA0003(2).jpg" class="gallery-img" loading="lazy">
                 </div>
-                <div class="certificate-item">
-                    <div class="certificate-overlay">
+                <div class="gallery-item gallery-photo">
+                    <div class="gallery-overlay">
                         <i class="fas fa-eye"></i>
+                        <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=1_lzL4AejqwBewS93PLkwuaScK58-4CtV&sz=w1200" alt="Certificate 3" class="certificate-img" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1f0uvT3Befhy1B9navS6noFxuAuIW76gG&sz=w1200" alt="IMG-20250124-WA0004(2).jpg" class="gallery-img" loading="lazy">
                 </div>
-                <div class="certificate-item">
-                    <div class="certificate-overlay">
+                <div class="gallery-item gallery-photo">
+                    <div class="gallery-overlay">
                         <i class="fas fa-eye"></i>
+                        <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=1SN2LDXbJ68VFCwMApLYi45oWaci68VqU&sz=w1200" alt="Certificate 4" class="certificate-img" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1Nl7A0ekVdF0293q65F8D4s3u658X-GOa&sz=w1200" alt="IMG-20250124-WA0006(1).jpg" class="gallery-img" loading="lazy">
                 </div>
-                <div class="certificate-item">
-                    <div class="certificate-overlay">
+                <div class="gallery-item gallery-photo">
+                    <div class="gallery-overlay">
                         <i class="fas fa-eye"></i>
+                        <span>View Full Size</span>
                     </div>
-                    <img src="https://drive.google.com/thumbnail?id=1isFS7qDTYPc7999EJ8mMT3zJqq8HrsYA&sz=w1200" alt="Certificate 5" class="certificate-img" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=19xAQ2lzO3R2zhTx4UdZHpVbC6eOTAJZJ&sz=w1200" alt="IMG-20250124-WA0007(2).jpg" class="gallery-img" loading="lazy">
                 </div>
             </div>
+            <p class="media-note">
+                <i class="fas fa-eye"></i> Click any image to view it in full size &nbsp;|&nbsp; <i class="fas fa-play"></i> Videos play directly from Google Drive
+            </p>
         </div>
     </section>
 
@@ -303,16 +394,15 @@
     </div>
 
     <script>
-        // Modal functionality for images
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
         const closeBtn = document.querySelector('.modal-close');
 
-        document.querySelectorAll('.certificate-item').forEach(item => {
+        document.querySelectorAll('.gallery-item.gallery-photo').forEach(item => {
             item.addEventListener('click', function() {
                 const img = this.querySelector('img');
                 modal.style.display = 'block';
-                modalImg.src = img.src;
+                modalImg.src = img.src.replace('sz=w1200', 'sz=w2000');
                 modalImg.alt = img.alt;
                 document.body.style.overflow = 'hidden';
             });

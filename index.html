@@ -521,8 +521,10 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -533,6 +535,7 @@
         .project-image-container {
             height: 200px;
             overflow: hidden;
+            background-color: var(--light-color);
         }
 
         .project-image {
@@ -546,33 +549,11 @@
             transform: scale(1.05);
         }
 
-        .project-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .project-card-tall {
-            max-width: 420px;
-            justify-self: center;
-        }
-
-        .project-card-tall .project-image-container {
-            height: auto;
-            display: block;
-            background: none;
-        }
-
-        .project-card-tall .project-video {
-            width: 100%;
-            height: auto;
-            object-fit: fill;
-            display: block;
-        }
-
         .project-content {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .project-title {
@@ -592,121 +573,171 @@
             color: var(--text-color);
             margin-bottom: 20px;
             line-height: 1.6;
+            flex: 1;
         }
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .project-tag {
-            background-color: var(--accent-color);
-            color: #FFFFFF;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        .project-tag:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .project-link {
-            display: flex;
+        .view-more-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            color: var(--accent-color);
-            text-decoration: none;
+            justify-content: center;
+            gap: 9px;
+            align-self: flex-start;
+            padding: 11px 22px;
+            background-color: var(--accent-color);
+            color: white;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 8px 0;
+            font-size: 0.95rem;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(173, 117, 86, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .project-link:hover {
-            color: var(--secondary-color);
-            transform: translateX(5px);
+        .view-more-btn:hover {
+            background-color: #8B5A3E;
+            transform: translateX(3px);
+            box-shadow: 0 6px 18px rgba(173, 117, 86, 0.4);
         }
 
-        .project-link i {
-            font-size: 1.1rem;
-        }
-
-        /* Copies Section */
-        .copies-grid {
+        /* Featured Media Sections (Script & Voice / Video Scripts) */
+        .featured-media-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            justify-content: center;
             padding: 20px;
         }
 
-        .copy-item {
+        .featured-media-card {
+            max-width: 780px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
             background-color: var(--card-bg);
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.09);
             border: 1px solid var(--border-color);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .featured-media-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .featured-media-video {
             position: relative;
-            cursor: pointer;
-        }
-
-        .copy-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .copy-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 2;
+            min-height: 320px;
+            padding: 26px;
+            background:
+                linear-gradient(180deg, rgba(217, 205, 191, 0.6), rgba(217, 205, 191, 1)),
+                var(--light-color);
         }
 
-        .copy-item:hover .copy-overlay {
-            opacity: 1;
+        .featured-media-video::before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            border: 1px solid rgba(173, 117, 86, 0.35);
+            border-radius: 12px;
+            pointer-events: none;
         }
 
-        .copy-overlay i {
-            color: white;
-            font-size: 2rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .copy-img {
+        .featured-media-video iframe {
+            position: relative;
             width: 100%;
-            height: 320px;
-            object-fit: contain;
-            object-position: center;
-            background-color: var(--light-color);
-            transition: transform 0.3s ease;
-            border-radius: 10px;
+            aspect-ratio: 16 / 9;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
         }
 
-        .copy-item:hover .copy-img {
-            transform: scale(1.1);
+        .featured-media-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+            padding: 34px 32px;
+            border-left: 1px solid var(--border-color);
+        }
+
+        .featured-media-body h3 {
+            color: var(--text-color);
+            font-size: 1.55rem;
+            line-height: 1.3;
+        }
+
+        .featured-media-body p {
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #9A6546, #7A4F38);
+            color: white;
+            text-align: center;
+            padding: 90px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 35px;
+        }
+
+        .cta-buttons-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 34px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .cta-whatsapp-primary {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .cta-whatsapp-primary:hover {
+            background-color: #1FB959;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .cta-whatsapp-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-whatsapp-secondary:hover {
+            background-color: white;
+            color: var(--accent-color);
+            transform: translateY(-3px);
         }
 
         /* Modal Styles */
@@ -753,83 +784,6 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-
-        /* Video Script Section */
-        .video-script-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            align-items: start;
-        }
-
-        .script-item {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--border-color);
-        }
-
-        .script-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .script-info {
-            padding: 20px;
-        }
-
-        .script-info h3 {
-            color: var(--accent-color);
-            margin-bottom: 10px;
-        }
-
-        .script-info p {
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .script-files {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--border-color);
-        }
-
-        .script-files h3 {
-            color: var(--accent-color);
-            margin-bottom: 20px;
-        }
-
-        .script-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .script-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #FFFFFF;
-            text-decoration: none;
-            padding: 12px 20px;
-            background-color: var(--accent-color);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .script-link:hover {
-            background-color: #8B5A3E;
-            color: #FFFFFF;
-            transform: translateX(5px);
-        }
-
-        .script-link i {
-            font-size: 1.2rem;
         }
 
         /* Contact Section */
@@ -1005,27 +959,33 @@
                 height: 180px;
             }
 
-            .project-card-tall .project-image-container {
-                height: auto;
-            }
-
             .contact-container {
                 grid-template-columns: 1fr;
             }
 
-            .copies-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-            }
-
-            .copy-img {
-                height: 280px;
-            }
-
-            .video-script-content {
+            .featured-media-card {
                 grid-template-columns: 1fr;
-                gap: 30px;
             }
+
+            .featured-media-video {
+                min-height: 0;
+            }
+
+            .featured-media-body {
+                border-left: none;
+                border-top: 1px solid var(--border-color);
+                padding: 26px 24px;
+            }
+
+            .cta-section {
+                padding: 60px 0;
+            }
+
+            .cta-section h2 {
+                font-size: 1.9rem;
+            }
+
+        }
 
             .modal-content {
                 max-width: 95%;
@@ -1066,7 +1026,7 @@
                 </li>
                 <li>
                     <a href="#skills">
-                        <i class="fas fa-code"></i>
+                        <i class="fas fa-pen-nib"></i>
                         Skills
                     </a>
                 </li>
@@ -1077,21 +1037,15 @@
                     </a>
                 </li>
                 <li>
+                    <a href="#video-scripts">
+                        <i class="fas fa-video"></i>
+                        Video Scripts
+                    </a>
+                </li>
+                <li>
                     <a href="#projects">
                         <i class="fas fa-project-diagram"></i>
                         Projects
-                    </a>
-                </li>
-                <li>
-                    <a href="#copies">
-                        <i class="fas fa-copy"></i>
-                        Copies
-                    </a>
-                </li>
-                <li>
-                    <a href="#video-script">
-                        <i class="fas fa-video"></i>
-                        Video Script
                     </a>
                 </li>
                 <li>
@@ -1129,7 +1083,7 @@
                         Great content isn't just written, it's crafted with creative ideas and a clear purpose.
                     </p>
                     <p style="margin-top: 15px;">
-                        With 4+ years of experience in the Saudi market. I've worked with companies in different fields, including engineering, restaurants, cafes, medical centers, physiotherapy, beauty, and skincare.
+                        With 4+ years of experience in the Saudi market, I've worked with companies in different fields, including engineering, restaurants, cafes, medical centers, physiotherapy, beauty, and skincare.
                     </p>
                 </div>
                 <div class="about-stats">
@@ -1185,22 +1139,43 @@
             <div class="certificates-grid">
                 <a href="certificates.html" class="certificates-card">
                     <div class="certificates-card-img">
-                        <img src="./Certifications/cover.jpg" alt="My Certificates">
+                        <img src="https://drive.google.com/thumbnail?id=182rFMXFf3ZVkdewN_bSbhL7eo8Gnx5tv&sz=w1600" alt="My Certificates" loading="lazy">
                     </div>
                     <div class="certificates-card-body">
                         <span class="certificates-label"><i class="fas fa-certificate"></i> Course Certificate</span>
                         <h3>My Certificates</h3>
                         <span class="certificates-divider"></span>
                         <p class="certificates-institution">Reflecting expertise and continuous learning.</p>
-                        <div class="certificates-meta">
-                            <span><i class="fas fa-award"></i> 5 Certificates</span>
-                            <span><i class="far fa-calendar-alt"></i> Updated 2026</span>
-                        </div>
                         <span class="certificates-view-btn">
-                            <i class="fas fa-external-link-alt"></i> View Certificate
+                            <i class="fas fa-arrow-right"></i> View More
                         </span>
                     </div>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="script-voice" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Script & Voice</h2>
+                <p>I write creative scripts and create AI-generated voiceovers for all fields.</p>
+            </div>
+            <div class="featured-media-grid">
+                <div class="featured-media-card">
+                    <div class="featured-media-video">
+                        <iframe src="https://drive.google.com/file/d/1ym0uHj1VfY8VQi-URv2EinTBAksVJFgq/preview" title="Script & Voice" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="featured-media-body">
+                        <span class="certificates-label"><i class="fas fa-microphone"></i> Featured Work</span>
+                        <h3>Script & Voice</h3>
+                        <span class="certificates-divider"></span>
+                        <p>Creative scripts turned into AI-generated voiceovers, crafted for any field — from ads to social content.</p>
+                        <a href="https://drive.google.com/drive/folders/1Tj6t71hgsBSkhfULsW2kcqbsykzqr8T9" class="certificates-view-btn" target="_blank" rel="noopener">
+                            <i class="fas fa-arrow-right"></i> View More
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1211,153 +1186,182 @@
                 <h2>My Projects</h2>
             </div>
             <div class="projects-grid">
-                <div class="project-card project-card-tall">
+                <div class="project-card">
                     <div class="project-image-container">
-                        <video controls preload="metadata" class="project-video">
-                            <source src="./projects/Script&Voice/cover.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <img src="https://drive.google.com/thumbnail?id=1RFemUdEl1LDHOpf8sDXgoIngTt4zNyyb&sz=w1200" alt="Gouri" class="project-image" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">
-                            <i class="fas fa-microphone"></i>
-                            Script & Voice
+                            <i class="fas fa-spa"></i>
+                            Gouri
                         </h3>
                         <p class="project-description">
-                            I write creative scripts and create AI-generated voiceovers for all fields
+                            I created content and a motion video script for Gouri Beauty Center, showing the product benefits and results in a clear way.
                         </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Script Writing</span>
-                            <span class="project-tag">AI Voiceovers</span>
-                        </div>
+                        <a href="project-gouri.html" class="view-more-btn">
+                            View More <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
-                        </div>
-                        </div>
-    </section>
-
-    <section id="copies" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Copies</h2>
-                <p>Creative copywriting samples showcasing engaging content for various campaigns</p>
-            </div>
-            <div class="copies-grid">
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://drive.google.com/thumbnail?id=1A5fp1bCmTUIpRUKtPEHjoZjpqAsx3y1r&sz=w1200" alt="Saleeq Albadia" class="project-image" loading="lazy">
                     </div>
-                    <img src="./copys/1.jpeg" alt="Copy 1" class="copy-img">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-utensils"></i>
+                            Saleeq Albadia
+                        </h3>
+                        <p class="project-description">
+                            I created content for a restaurant serving Saleeg and Madghout, focusing on the dishes and the authentic taste of Saleeg in an attractive way.
+                        </p>
+                        <a href="project-saleeq-albadia.html" class="view-more-btn">
+                            View More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://drive.google.com/thumbnail?id=1ONNACBVIJsDz8GgOGDl0XRadrF9ZNfPr&sz=w1200" alt="Quality Care Medical" class="project-image" loading="lazy">
                     </div>
-                    <img src="./copys/2.jpeg" alt="Copy 2" class="copy-img">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-heartbeat"></i>
+                            Quality Care Medical
+                        </h3>
+                        <p class="project-description">
+                            I focused on the problems customers face, then I showed how the center can help treat and solve them.
+                        </p>
+                        <a href="project-quality-care-medical.html" class="view-more-btn">
+                            View More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://drive.google.com/thumbnail?id=1MFIRmFMeD6wdBaK9Fv3IR5eVhdf3B9kD&sz=w1200" alt="Sohob Alkayan" class="project-image" loading="lazy">
                     </div>
-                    <img src="./copys/3.jpeg" alt="Copy 3" class="copy-img">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-elevator"></i>
+                            Sohob Alkayan
+                        </h3>
+                        <p class="project-description">
+                            The campaign focused on elevator maintenance, emergency services, safety, and easy payment plans.
+                        </p>
+                        <a href="project-sohob-alkayan.html" class="view-more-btn">
+                            View More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://drive.google.com/thumbnail?id=1zAJbgW2SU-FIDNyRmk79WqQ1Y8DKCHSM&sz=w1200" alt="Wesaf Cafe" class="project-image" loading="lazy">
                     </div>
-                    <img src="./copys/4.jpeg" alt="Copy 4" class="copy-img">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-coffee"></i>
+                            Wesaf Cafe
+                        </h3>
+                        <p class="project-description">
+                            I focused on hot and cold drinks, tasty desserts, and the variety of the cafe menu, presented in an attractive way.
+                        </p>
+                        <a href="project-wesaf-cafe.html" class="view-more-btn">
+                            View More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://drive.google.com/thumbnail?id=1KjmbrBsmUIvlUX7cQ3mcq23qzG225dv5&sz=w1200" alt="Delta Medical" class="project-image" loading="lazy">
                     </div>
-                    <img src="./copys/5.jpeg" alt="Copy 5" class="copy-img">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-bone"></i>
+                            Delta Medical
+                        </h3>
+                        <p class="project-description">
+                            I created content for Delta, focusing on pain and movement problems, and how physical therapy can help improve them.
+                        </p>
+                        <a href="project-delta-medical.html" class="view-more-btn">
+                            View More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://drive.google.com/thumbnail?id=1UU1SA0Q124EBHYQFQpKCb5lq_ursKnSI&sz=w1200" alt="Drinks Cafe" class="project-image" loading="lazy">
                     </div>
-                    <img src="./copys/6.jpeg" alt="Copy 6" class="copy-img">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-mug-hot"></i>
+                            Drinks Cafe
+                        </h3>
+                        <p class="project-description">
+                            The content focused on a drive-thru coffee shop, highlighting drinks, desserts, and easy ordering from the car.
+                        </p>
+                        <a href="project-drinks-cafe.html" class="view-more-btn">
+                            View More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://drive.google.com/thumbnail?id=1AsfxvY7bK_3pkgt1Pg41hAIfuqRZFuKo&sz=w1200" alt="Nascita" class="project-image" loading="lazy">
                     </div>
-                    <img src="./copys/7.jpeg" alt="Copy 7" class="copy-img">
-                </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-sparkles"></i>
+                            Nascita
+                        </h3>
+                        <p class="project-description">
+                            I created content for a beauty brand, focusing on product benefits and results to increase sales and encourage online orders.
+                        </p>
+                        <a href="project-nascita.html" class="view-more-btn">
+                            View More <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
-                    <img src="./copys/8.jpeg" alt="Copy 8" class="copy-img">
-                </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <img src="./copys/9.jpeg" alt="Copy 9" class="copy-img">
-                </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <img src="./copys/10.jpeg" alt="Copy 10" class="copy-img">
-                </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <img src="./copys/11.jpeg" alt="Copy 11" class="copy-img">
-                </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <img src="./copys/12.jpeg" alt="Copy 12" class="copy-img">
-                </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <img src="./copys/13.jpeg" alt="Copy 13" class="copy-img">
-                </div>
-                <div class="copy-item">
-                    <div class="copy-overlay">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <img src="./copys/14.jpeg" alt="Copy 14" class="copy-img">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="video-script" class="section">
+    <section id="video-scripts" class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Video Script</h2>
-                <p>Strategic content planning and video script development for social media campaigns</p>
-                        </div>
-            <div class="video-script-content">
-             
-             
-                <div class="script-files">
-                    <h3>Video Script Documents</h3>
-                    <p>Professional video script development for various social media platforms and campaign types.</p>
-                    <div class="script-links">
-                        <a href="./video script/vidoe script 1.docx" class="script-link" download>
-                            <i class="fas fa-file-word"></i> Video Script 1
-                        </a>
-                        <a href="./video script/vidoe script 2.docx" class="script-link" download>
-                            <i class="fas fa-file-word"></i> Video Script 2
-                        </a>
-                        <a href="./video script/vidoe script 3.docx" class="script-link" download>
-                            <i class="fas fa-file-word"></i> Video Script 3
-                        </a>
-                        <a href="./video script/vidoe script 4.docx" class="script-link" download>
-                            <i class="fas fa-file-word"></i> Video Script 4
+                <h2>Video Scripts</h2>
+                <p>Begins with research, then a creative idea turns into an impactful scene.</p>
+            </div>
+            <div class="featured-media-grid">
+                <div class="featured-media-card">
+                    <div class="featured-media-video">
+                        <iframe src="https://drive.google.com/file/d/142vKIZqDHA4QDo3RT31aIj5PuqNCB_6O/preview" title="Video Scripts" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="featured-media-body">
+                        <span class="certificates-label"><i class="fas fa-video"></i> Featured Script</span>
+                        <h3>Video Scripts</h3>
+                        <span class="certificates-divider"></span>
+                        <p>Every script starts with research and ends with an idea that lands. Watch how a creative concept turns into an impactful scene.</p>
+                        <a href="video-scripts.html" class="certificates-view-btn">
+                            <i class="fas fa-arrow-right"></i> View More
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2>Let's Talk</h2>
+            <p>Have a project in mind? Let's create something impactful together.</p>
+            <div class="cta-buttons-row">
+                <a href="https://wa.me/201027816262" class="cta-whatsapp cta-whatsapp-primary" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> Let's Talk
+                </a>
+                <a href="https://wa.me/201027816262" class="cta-whatsapp cta-whatsapp-secondary" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> Let's Create
+                </a>
             </div>
         </div>
     </section>
@@ -1369,31 +1373,31 @@
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <a href="https://wa.me/201115117227" class="contact-item contact-link" target="_blank">
+                    <a href="https://wa.me/201027816262" class="contact-item contact-link" target="_blank">
                         <div class="contact-icon">
                             <i class="fab fa-whatsapp"></i>
                         </div>
                         <div class="contact-text">
                             <h4>WhatsApp</h4>
-                            <p>01115117227</p>
+                            <p>01027816262</p>
                         </div>
                     </a>
-                    <a href="mailto:baselsharaf11@gmail.com" class="contact-item contact-link">
+                    <a href="mailto:Shimaamhmd49@gmail.com" class="contact-item contact-link">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-text">
                             <h4>Email</h4>
-                            <p>baselsharaf11@gmail.com</p>
+                            <p>Shimaamhmd49@gmail.com</p>
                         </div>
                     </a>
-                    <a href="https://www.linkedin.com/in/basel-sharaf" class="contact-item contact-link" target="_blank">
+                    <a href="https://www.linkedin.com/in/alshimaa-bakr-797532307" class="contact-item contact-link" target="_blank" rel="noopener">
                         <div class="contact-icon">
                             <i class="fab fa-linkedin"></i>
                     </div>
                         <div class="contact-text">
                             <h4>LinkedIn</h4>
-                            <p>linkedin.com/in/basel-sharaf</p>
+                            <p>LinkedIn</p>
                         </div>
                     </a>
                 </div>
@@ -1414,18 +1418,17 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#certificates">Certificates</a></li>
+                        <li><a href="#video-scripts">Video Scripts</a></li>
                         <li><a href="#projects">Projects</a></li>
-                        <li><a href="#copies">Copies</a></li>
-                        <li><a href="#video-script">Video Script</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Connect</h3>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/basel-sharaf" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://shorturl.at/w4qEZ" class="social-link"><i class="fas fa-globe"></i></a>
-           
+                        <a href="https://www.linkedin.com/in/alshimaa-bakr-797532307" class="social-link" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/201027816262" class="social-link" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:Shimaamhmd49@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
@@ -1485,7 +1488,7 @@
         const closeBtn = document.querySelector('.modal-close');
 
         // Add click event listeners to all copy and certificate images
-        document.querySelectorAll('.copy-item, .certificate-item').forEach(item => {
+        document.querySelectorAll('.certificate-item').forEach(item => {
             item.addEventListener('click', function() {
                 const img = this.querySelector('img');
                 modal.style.display = 'block';
