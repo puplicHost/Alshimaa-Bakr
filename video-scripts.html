@@ -247,6 +247,67 @@
             margin: 0 4px;
         }
 
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #9A6546, #7A4F38);
+            color: white;
+            text-align: center;
+            padding: 90px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 35px;
+        }
+
+        .cta-buttons-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 34px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .cta-whatsapp-primary {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .cta-whatsapp-primary:hover {
+            background-color: #1FB959;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .cta-whatsapp-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-whatsapp-secondary:hover {
+            background-color: white;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -421,6 +482,21 @@
             <p class="media-note">
                 <i class="fas fa-eye"></i> Click any image to view it in full size &nbsp;|&nbsp; <i class="fas fa-play"></i> Videos play inline with the controls
             </p>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Let's Talk</h2>
+            <p>Have a project in mind? Let's create something impactful together.</p>
+            <div class="cta-buttons-row">
+                <a href="https://wa.me/201027816262" class="cta-whatsapp cta-whatsapp-primary" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> Let's Talk
+                </a>
+                <a href="https://wa.me/201027816262" class="cta-whatsapp cta-whatsapp-secondary" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> Let's Create
+                </a>
+            </div>
         </div>
     </section>
 

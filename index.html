@@ -937,6 +937,27 @@
             border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 
+        .footer-bottom p {
+            margin-bottom: 6px;
+        }
+
+        .footer-credit {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .footer-credit a {
+            color: #7A4F38;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-credit a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             nav {
@@ -1124,16 +1145,17 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>
-                        Great content isn't just written, it's crafted with creative ideas and a clear purpose.
-                    </p>
+                   
                     <p style="margin-top: 15px;">
                         With 4+ years of experience in the Saudi market, I've worked with companies in different fields, including engineering, restaurants, cafes, medical centers, physiotherapy, beauty, and skincare.
+                    </p>
+                     <p>
+                        Great content isn't just written, it's crafted with creative ideas and a clear purpose.
                     </p>
                 </div>
                 <div class="about-stats">
                     <div class="stat-item">
-                        <div class="stat-number">+3</div>
+                        <div class="stat-number">+4</div>
                         <p>Years Experience</p>
                     </div>
                     <div class="stat-item">
@@ -1170,6 +1192,10 @@
                 <div class="skill-card">
                     <i class="fas fa-hashtag"></i>
                     <h3>Social Media Content</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-microphone"></i>
+                    <h3>AI Voice Over</h3>
                 </div>
             </div>
         </div>
@@ -1218,6 +1244,33 @@
                         <h3>Script & Voice</h3>
                         <span class="certificates-divider"></span>
                         <p>Creative scripts turned into AI-generated voiceovers, crafted for any field — from ads to social content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video-scripts" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Video Scripts</h2>
+                <p>Begins with research, then a creative idea turns into an impactful scene.</p>
+            </div>
+            <div class="featured-media-grid">
+                <div class="featured-media-card">
+                    <div class="featured-media-video">
+                        <video controls preload="metadata" poster="media/video-scripts/video-script-05-poster.jpg" title="Video Scripts">
+                            <source src="media/video-scripts/video-script-05.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="featured-media-body">
+                        <span class="certificates-label"><i class="fas fa-video"></i> Featured Script</span>
+                        <h3>Video Scripts</h3>
+                        <span class="certificates-divider"></span>
+                        <p>Every script starts with research and ends with an idea that lands. Watch how a creative concept turns into an impactful scene.</p>
+                        <a href="video-scripts.html" class="certificates-view-btn">
+                            <i class="fas fa-arrow-right"></i> View More
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1370,48 +1423,6 @@
         </div>
     </section>
 
-    <section id="video-scripts" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Video Scripts</h2>
-                <p>Begins with research, then a creative idea turns into an impactful scene.</p>
-            </div>
-            <div class="featured-media-grid">
-                <div class="featured-media-card">
-                    <div class="featured-media-video">
-                        <video controls preload="metadata" poster="media/video-scripts/video-script-05-poster.jpg" title="Video Scripts">
-                            <source src="media/video-scripts/video-script-05.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="featured-media-body">
-                        <span class="certificates-label"><i class="fas fa-video"></i> Featured Script</span>
-                        <h3>Video Scripts</h3>
-                        <span class="certificates-divider"></span>
-                        <p>Every script starts with research and ends with an idea that lands. Watch how a creative concept turns into an impactful scene.</p>
-                        <a href="video-scripts.html" class="certificates-view-btn">
-                            <i class="fas fa-arrow-right"></i> View More
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="cta" class="cta-section">
-        <div class="container">
-            <h2>Let's Talk</h2>
-            <p>Have a project in mind? Let's create something impactful together.</p>
-            <div class="cta-buttons-row">
-                <a href="https://wa.me/201027816262" class="cta-whatsapp cta-whatsapp-primary" target="_blank" rel="noopener">
-                    <i class="fab fa-whatsapp"></i> Let's Talk
-                </a>
-                <a href="https://wa.me/201027816262" class="cta-whatsapp cta-whatsapp-secondary" target="_blank" rel="noopener">
-                    <i class="fab fa-whatsapp"></i> Let's Create
-                </a>
-            </div>
-        </div>
-    </section>
-
     <section id="contact" class="section">
         <div class="container">
             <div class="section-header">
@@ -1479,7 +1490,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Alshimaa Bakr. All rights reserved.</p>
+                <p>&copy; 2026 Alshimaa Bakr. All rights reserved.</p>
+                <p class="footer-credit">Developed by <a href="https://portholiohub.pages.dev/" target="_blank" rel="noopener">PortfolioHub</a></p>
             </div>
         </div>
     </footer>
