@@ -628,26 +628,8 @@
 
         .featured-media-video {
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 320px;
-            padding: 26px;
-            background:
-                linear-gradient(180deg, rgba(217, 205, 191, 0.6), rgba(217, 205, 191, 1)),
-                var(--light-color);
-        }
-
-        .featured-media-video::before {
-            content: '';
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            right: 14px;
-            bottom: 14px;
-            border: 1px solid rgba(173, 117, 86, 0.35);
-            border-radius: 12px;
-            pointer-events: none;
+            display: block;
+            overflow: hidden;
         }
 
         .featured-media-video iframe {
@@ -665,11 +647,8 @@
             position: relative;
             width: 100%;
             height: auto;
-            max-height: 70vh;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background-color: #000;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+            border: none;
+            background-color: transparent;
             object-fit: contain;
             display: block;
         }
@@ -1272,12 +1251,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="lets-create">
-                <a href="https://wa.me/201027816262" class="cta-whatsapp cta-whatsapp-primary" target="_blank" rel="noopener">
-                    <i class="fab fa-whatsapp"></i> Let's Create on WhatsApp
-                </a>
-            </div>
         </div>
     </section>
 
@@ -1471,7 +1444,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Alshimaa Bakr</h3>
-                    <p>Copywriter & Script Writer crafting engaging digital content.</p>
+                    <p>Copywriter & Script Writer.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
